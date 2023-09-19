@@ -75,7 +75,7 @@ exports.handler = async (event,context) => {
         Detail: JSON.stringify({
           orderId,
           userId,
-          Message:"A Lambda function is invoked by a POST request to Amazon API Gateway. The Lambda function, Takes the token ID from the QR code scan and checks it against the valid token ID's stored in a DynamoDB database. If Valid, a new Step Functions Workflow is started, this workflow ochestrates various AWS services to move the order along to completion.",
+          Message:"A Lambda function is invoked by a POST request to Amazon API Gateway. The Lambda function, Takes the token ID from the QR code scan and checks it against the valid token ID's stored in a DynamoDB database. If Valid, a new Step Functions Workflow is started, this workflow orchestrates various AWS services to move the order along to completion.",
           bucket
         }),
         DetailType: 'Validator.NewOrder',

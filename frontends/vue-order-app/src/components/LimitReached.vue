@@ -47,14 +47,14 @@ import History from '@/components/History'
 
         console.log('banner',this.previousOrders)
   
-        this.countDown = await this.setContDown();
+        this.countDown = await this.setCountDown();
         this.countDownTimer()
         
         this.loading=false
             
       },
         methods: {
-            async setContDown(){
+            async setCountDown(){
                 const td= new Date()
                 const today = dayjs(td)
                 const tm = new Date(today)

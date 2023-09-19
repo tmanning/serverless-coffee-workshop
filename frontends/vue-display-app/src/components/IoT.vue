@@ -10,7 +10,7 @@
   'use strict'
   /* eslint-disable */
   const AWS = require('aws-sdk')
-  const AWSIoTData = require('aws-iot-device-sdk')
+  import { mqtt, iot } from "aws-iot-device-sdk-v2";
 
   const topics = [
      'serverlesspresso-admin',
@@ -33,7 +33,7 @@ export default {
       }
     }),
     this.emitter.on('subscribe', async (topic) => {
-      console.log('Request subcription to: ', topic)
+      console.log('Request subscription to: ', topic)
       mqttClient.subscribe(topic)
     })
   },
@@ -83,17 +83,26 @@ export default {
 
       const creds = await this.getCreds()
 
-      const mqttClient = AWSIoTData.device({
-        region: AWS.config.region,
-        host: AWSConfiguration.host,
-        clientId: clientId,
-        protocol: 'wss',
-        maximumReconnectTimeMs: 8000,
-        debug: false,
-        accessKeyId: creds.Credentials.AccessKeyId,
-        secretKey: creds.Credentials.SecretKey,
-        sessionToken: creds.Credentials.SessionToken
-      })
+      let config = iot.AwsIotMqttConnectionConfigBuilder.new_default_builder()
+          .with_clean_session(true)
+          .with_client_id(clientId)
+          .with_endpoint(AWSConfiguration.host) //FIXME: Host is not endpoint
+          .with_credentials(AWS.config.region, creds.Credentials.AccessKeyId, creds.Credentials.SecretKey, creds.Credentials.SessionToken)
+          .with_keep_alive_seconds(30)
+          .build();
+      const mqttClient = new mqtt.MqttClient();
+      //
+      // const mqttClient = AWSIoTData.device({
+      //   region: AWS.config.region,
+      //   host: AWSConfiguration.host,
+      //   clientId: clientId,
+      //   protocol: 'wss',
+      //   maximumReconnectTimeMs: 8000,
+      //   debug: false,
+      //   accessKeyId: creds.Credentials.AccessKeyId,
+      //   secretKey: creds.Credentials.SecretKey,
+      //   sessionToken: creds.Credentials.SessionToken
+      // })
 
       // When first connected, subscribe to the topics we are interested in.
       mqttClient.on('connect', function () {

@@ -73,6 +73,7 @@
 'use strict'
 
 export default {
+  // eslint-disable-next-line
   name: 'Auth',
   data() {
     return {

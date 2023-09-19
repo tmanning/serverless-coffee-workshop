@@ -15,7 +15,7 @@ Parameters:
   OrderProcessorStateMachineArn:
     Type: AWS::SSM::Parameter::Value<String>
     Description: Step Functions state machine
-    Default: /Serverlesspresso/order-processor/statemachine
+    Default: '/Serverlesspresso/order-processor/statemachine'
 
   ConfigURL:
     Type: AWS::SSM::Parameter::Value<String>

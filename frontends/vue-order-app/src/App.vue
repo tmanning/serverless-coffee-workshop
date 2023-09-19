@@ -64,7 +64,7 @@
           <Extras v-if=" displayManager==='choose' && authState === 'signedin' && user && order.drink!=''" @clicked="onSelectExtra" v-bind:mod="{order:order,menu:menu}"/>
           <Basket v-if="displayManager==='choose' &&  authState === 'signedin' && user " @clicked="onProcessOrder" v-bind:basket="{order:order,user:user}"/>
 
-          <Status :key="order.status" v-if="displayManager==='ordered' && authState === 'signedin' && user && order.id" v-bind:order="order" @completed="onReciept" />
+          <Status :key="order.status" v-if="displayManager==='ordered' && authState === 'signedin' && user && order.id" v-bind:order="order" @completed="onReceipt" />
           <Receipt v-if="displayManager==='complete' && authState === 'signedin' && user " v-bind:order="{order:order,historyConfig:historyConfig}" @clicked="init"/>
         </div>
 
@@ -352,7 +352,7 @@ export default {
             },
 
 
-          onReciept(){
+          onReceipt(){
             this.displayManager='complete'
             console.log(this.displayManager)
           },

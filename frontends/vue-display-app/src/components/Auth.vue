@@ -67,6 +67,7 @@ import { Auth } from 'aws-amplify'
 const SMS_DELAY = 30000
 
 export default {
+  // eslint-disable-next-line
   name: 'Auth',
   data() {
     return {

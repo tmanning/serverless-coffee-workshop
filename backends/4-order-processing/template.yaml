@@ -32,7 +32,7 @@ Parameters:
     Default: '/Serverlesspresso/core/eventbusarn'
   GetOrderIdFunctionName:
     Type: AWS::SSM::Parameter::Value<String>
-    Description: "Lambda function that Generates an Order Numver"
+    Description: "Lambda function that Generates an Order Number"
     Default: '/Serverlesspresso/counting/GetOrderIdFunctionName'
   IsStoreOpenFunctionName:
     Type: AWS::SSM::Parameter::Value<String>
@@ -179,7 +179,7 @@ Resources:
             - events:PutEvents
             Resource:
             - !Ref CoreEventBusArn
-      - PolicyName: StartOrderProcessingStepFuntions
+      - PolicyName: StartOrderProcessingStepFunctions
         PolicyDocument:
           Version: 2012-10-17
           Statement:
@@ -192,7 +192,7 @@ Resources:
 
 
   ##########################################################################
-  #  Lambda funtions                                                    #
+  #  Lambda functions                                                    #
   ##########################################################################
   LambdaSfnResume:
     Type: AWS::Serverless::Function # More info about Function Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html

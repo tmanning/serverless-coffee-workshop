@@ -6,7 +6,7 @@
 <div class="row">
     <div class="flex xs12">
       <va-card >
-        <va-card-title><h2>Choose a  serverless drink:</h2> </va-card-title>
+        <va-card-title><h2>Choose a serverless drink:</h2> </va-card-title>
         <va-card-content>
         <div class="tabed-content">
             <div id="drinks">

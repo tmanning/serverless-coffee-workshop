@@ -30,7 +30,7 @@ export default {
       }
     }),
     this.emitter.on('subscribe', async (topic) => {
-      console.log('Request subcription to: ', topic)
+      console.log('Request subscription to: ', topic)
       mqttClient.subscribe(topic)
     })
   },

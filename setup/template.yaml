@@ -208,7 +208,7 @@ Resources:
                   - iot:Receive
                 Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":topic/*" ] ]
 
-  # Create a role for authorized acces to AWS resources.
+  # Create a role for authorized access to AWS resources.
   CognitoAuthorizedRole:
     Type: "AWS::IAM::Role"
     Properties:
